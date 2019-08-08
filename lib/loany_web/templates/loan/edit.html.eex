@@ -1,0 +1,6 @@
+<h1>Try again !</h1>
+
+<%=render LoanyWeb.LoanView,"index.html",changeset: @changeset,action: @action,conn: @conn %>
+
+
+

@@ -1,0 +1,28 @@
+<h1>Listing Loans</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Amount</th>
+      <th>Applicant names</th>
+      <th>Phone number</th>
+      <th>Email</th>
+      <th>Status</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for loan <- @loans do %>
+    <tr>
+      <td><%= loan.amount %></td>
+      <td><%= loan.applicant_names %></td>
+      <td><%= loan.phone_number %></td>
+      <td><%= loan.email %></td>
+      <td><%= loan.loan_status %></td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "Back", to: Routes.loan_path(@conn, :index) %></span>

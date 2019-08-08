@@ -1,0 +1,25 @@
+<h1>Loan application </h1>
+<%= form_for @changeset, @action, fn f -> %>
+  <%= label f, :amount %>
+  <%= number_input f, :amount %>
+  <%= error_tag f, :amount %>
+
+  <%= label f, :applicant_names %>
+  <%= text_input f, :applicant_names %>
+  <%= error_tag f, :applicant_names %>
+
+  <%= label f, :phone_number %>
+  <%= text_input f, :phone_number %>
+  <%= error_tag f, :phone_number %>
+
+  <%= label f, :email %>
+  <%= text_input f, :email %>
+  <%= error_tag f, :email %>
+
+  <div>
+    <%= submit "Save" %>
+  </div>
+<% end %>
+
+<span><%= link "Check all loans", to: Routes.loan_path(@conn, :new) %></span>
+

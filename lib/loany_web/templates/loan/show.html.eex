@@ -1,0 +1,31 @@
+<h1>Show Loan</h1>
+
+<ul>
+
+  <li>
+    <strong>Amount:</strong>
+    <%= @loan.amount %>
+  </li>
+
+  <li>
+    <strong>Applicant names:</strong>
+    <%= @loan.applicant_names %>
+  </li>
+
+  <li>
+    <strong>Phone number:</strong>
+    <%= @loan.phone_number %>
+  </li>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @loan.email %>
+  </li>
+
+  <li>
+    <strong>Inerest rate:</strong>
+    <%= @loan.loan_status %>
+  </li>
+
+</ul>
+<span><%= link "Back", to: Routes.loan_path(@conn, :index) %></span>
