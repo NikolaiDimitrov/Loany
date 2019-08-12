@@ -1,12 +1,15 @@
 defmodule Loany.LoanServer.Worker do
   use GenServer
 
+  alias Loany.Loans
+
   def start_link(_) do
     GenServer.start_link(__MODULE__, [], name: __MODULE__)
   end
 
   def init(state) do
-    state = 0
+    state = Loans.get_max_amount()
+    state = if is_nil(state), do: 0, else: state
     {:ok, state}
   end
 

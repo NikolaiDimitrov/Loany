@@ -101,4 +101,8 @@ defmodule Loany.Loans do
   def change_loan(%Loan{} = loan) do
     Loan.changeset(loan, %{})
   end
+
+  def get_max_amount() do
+    q = Ecto.Query.from(l in Loany.Loan, select: max(l.amount)) |> Repo.one()
+  end
 end
