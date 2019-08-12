@@ -6,7 +6,7 @@ defmodule Loany.Loans do
   import Ecto.Query, warn: false
   alias Loany.Repo
 
-  alias Loany.Loans.Loan
+  alias Loany.Loan
 
   @doc """
   Returns the list of loans.

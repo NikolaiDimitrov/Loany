@@ -1,4 +1,4 @@
-defmodule Loany.Loany.Worker do
+defmodule Loany.LoanServer.Worker do
   use GenServer
 
   def start_link(_) do
@@ -6,6 +6,7 @@ defmodule Loany.Loany.Worker do
   end
 
   def init(state) do
+    state = 0
     {:ok, state}
   end
 
@@ -13,13 +14,17 @@ defmodule Loany.Loany.Worker do
     GenServer.call(__MODULE__, {:create_loan, loan_params})
   end
 
-  def get_loans() do
+  def get_max_loan_amount() do
     GenServer.call(__MODULE__, :get_loans)
   end
 
   def handle_call({:create_loan, loan_params}, _from, state) do
-    new_state = [loan_params | state]
-    {:reply, :ok, new_state}
+    if(loan_params > state) do
+      new_state = loan_params
+      {:reply, :ok, new_state}
+    else
+      {:reply, :ok, state}
+    end
   end
 
   def handle_call(:get_loans, _from, state) do

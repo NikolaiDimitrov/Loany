@@ -1,6 +1,7 @@
-<h1>Try again !</h1>
-
-<%=render LoanyWeb.LoanView,"index.html",changeset: @changeset,action: @action,conn: @conn %>
-
-
-
+<h1>Loan is denied with rate <%=@rate%> Try again</h1>
+<script>
+         setTimeout(function(){
+             window.location.href = "http://localhost:4000"
+         }, 3000);       
+</script>
+  

@@ -1,4 +1,4 @@
-defmodule Loany.Loany.Worker.Supervisor do
+defmodule Loany.LoanServer.Supervisor do
   use Supervisor
 
   def start_link(_args) do
@@ -7,7 +7,7 @@ defmodule Loany.Loany.Worker.Supervisor do
 
   def init(:ok) do
     children = [
-      Loany.Loany.Worker
+      Loany.LoanServer.Worker
     ]
 
     Supervisor.init(children, strategy: :one_for_one)

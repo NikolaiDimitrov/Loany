@@ -23,9 +23,15 @@
   </li>
 
   <li>
-    <strong>Inerest rate:</strong>
+    <strong>Status:</strong>
     <%= @loan.loan_status %>
   </li>
+
+  <li>
+    <strong>Rate:</strong>
+    <%= @loan.loan_score %>
+  </li>
+
 
 </ul>
 <span><%= link "Back", to: Routes.loan_path(@conn, :index) %></span>

@@ -4,19 +4,19 @@ defmodule Loany.LoansTest do
   alias Loany.Loans
 
   describe "loans" do
-    alias Loany.Loans.Loan
+    alias Loany.Loan
 
     @valid_attrs %{
       amount: 42,
       applicant_names: "some applicant_names",
-      email: "some email",
-      phone_number: "some phone_number"
+      email: "test@mail.com",
+      phone_number: "12345555"
     }
     @update_attrs %{
       amount: 43,
       applicant_names: "some updated applicant_names",
-      email: "some updated email",
-      phone_number: "some updated phone_number"
+      email: "test@mail.com",
+      phone_number: "+123221312321"
     }
     @invalid_attrs %{amount: nil, applicant_names: nil, email: nil, phone_number: nil}
 
@@ -43,8 +43,8 @@ defmodule Loany.LoansTest do
       assert {:ok, %Loan{} = loan} = Loans.create_loan(@valid_attrs)
       assert loan.amount == 42
       assert loan.applicant_names == "some applicant_names"
-      assert loan.email == "some email"
-      assert loan.phone_number == "some phone_number"
+      assert loan.email == "test@mail.com"
+      assert loan.phone_number == "12345555"
     end
 
     test "create_loan/1 with invalid data returns error changeset" do
@@ -56,8 +56,8 @@ defmodule Loany.LoansTest do
       assert {:ok, %Loan{} = loan} = Loans.update_loan(loan, @update_attrs)
       assert loan.amount == 43
       assert loan.applicant_names == "some updated applicant_names"
-      assert loan.email == "some updated email"
-      assert loan.phone_number == "some updated phone_number"
+      assert loan.email == "test@mail.com"
+      assert loan.phone_number == "+123221312321"
     end
 
     test "update_loan/2 with invalid data returns error changeset" do

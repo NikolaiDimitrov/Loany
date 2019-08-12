@@ -12,7 +12,7 @@ defmodule Loany.Application do
       Loany.Repo,
       # Start the endpoint when the application starts
       LoanyWeb.Endpoint,
-      Loany.Loany.Worker.Supervisor
+      Loany.LoanServer.Supervisor
       # Starts a worker by calling: Loany.Worker.start_link(arg)
       # {Loany.Worker, arg},
     ]
