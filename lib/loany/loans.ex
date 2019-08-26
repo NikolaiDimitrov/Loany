@@ -4,9 +4,8 @@ defmodule Loany.Loans do
   """
 
   import Ecto.Query, warn: false
-  alias Loany.Repo
 
-  alias Loany.Loan
+  alias Loany.{Repo, Loan}
 
   @doc """
   Returns the list of loans.
@@ -103,6 +102,14 @@ defmodule Loany.Loans do
   end
 
   def get_max_amount() do
-    q = Ecto.Query.from(l in Loany.Loan, select: max(l.amount)) |> Repo.one()
+    max_amount = Ecto.Query.from(l in Loany.Loan, select: max(l.amount)) |> Repo.one()
+
+    case max_amount do
+      nil ->
+        0
+
+      amount ->
+        amount
+    end
   end
 end

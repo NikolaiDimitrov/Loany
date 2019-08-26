@@ -7,7 +7,7 @@ defmodule Loany.LoanServer.Supervisor do
 
   def init(:ok) do
     children = [
-      Loany.LoanServer.Worker
+      Loany.LoanServer.MaxLoan
     ]
 
     Supervisor.init(children, strategy: :one_for_one)

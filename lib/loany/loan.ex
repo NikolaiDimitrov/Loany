@@ -24,13 +24,13 @@ defmodule Loany.Loan do
     |> validate_phone()
   end
 
-  def validate_phone(%Ecto.Changeset{} = changeset) do
-    value = Map.get(changeset.changes, :phone_number)
+  def validate_phone(%Ecto.Changeset{changes: changes} = changeset) do
+    phone_number = Map.get(changes, :phone_number)
 
-    if is_nil(value) do
+    if is_nil(phone_number) do
       add_error(changeset, :phone_number, "Phone number can not be empty")
     else
-      if String.match?(value, ~r/^[+]?[0-9]{7,14}$/) do
+      if String.match?(phone_number, ~r/^[+]?[0-9]{7,14}$/) do
         changeset
       else
         add_error(changeset, :phone_number, "Invalid phone number")
