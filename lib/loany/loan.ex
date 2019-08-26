@@ -8,7 +8,7 @@ defmodule Loany.Loan do
     field :email, :string
     field :phone_number, :string
     field :loan_status, :string
-    field :loan_score, :string
+    field :loan_score, :decimal
 
     timestamps()
   end
@@ -27,7 +27,7 @@ defmodule Loany.Loan do
   def validate_phone(%Ecto.Changeset{} = changeset) do
     value = Map.get(changeset.changes, :phone_number)
 
-    if value == nil do
+    if is_nil(value) do
       add_error(changeset, :phone_number, "Phone number can not be empty")
     else
       if String.match?(value, ~r/^[+]?[0-9]{7,14}$/) do

@@ -1,5 +1,6 @@
 defmodule Loany.Scoring do
   alias Loany.LoanServer.Worker, as: Loany
+  @base 100
 
   def evaluate_loan_application(%{"amount" => amount}) do
     amount =
@@ -18,7 +19,7 @@ defmodule Loany.Scoring do
 
     score =
       if is_prime?(amount) do
-        "9.99%"
+        9.99
       else
         give_interest_rate()
       end
@@ -38,9 +39,8 @@ defmodule Loany.Scoring do
   end
 
   defp give_interest_rate() do
-    rate = Enum.random(4..11)
-    other_rate = Enum.random(10..99)
-    Integer.to_string(rate) <> "." <> Integer.to_string(other_rate) <> "%"
+    significand = Enum.random(400..1200)
+    significand / @base
   end
 
   defp is_prime?(n) when n in [2, 3], do: true

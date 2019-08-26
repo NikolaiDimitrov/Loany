@@ -27,7 +27,7 @@ defmodule LoanyWeb.LoanController do
     case Loans.create_loan(loan_params) do
       {:ok, loan} ->
         if(loan_status == :rejected) do
-          redirect(conn, to: Routes.loan_path(conn, :edit, loan_value))
+          redirect(conn, to: Routes.loan_path(conn, :edit, :ok))
         else
           redirect(conn, to: Routes.loan_path(conn, :show, loan))
         end
@@ -43,7 +43,7 @@ defmodule LoanyWeb.LoanController do
     render(conn, "show.html", loan: loan)
   end
 
-  def edit(conn, %{"id" => rate}) do
-    render(conn, "edit.html", rate: rate)
+  def edit(conn, _params) do
+    render(conn, "edit.html")
   end
 end

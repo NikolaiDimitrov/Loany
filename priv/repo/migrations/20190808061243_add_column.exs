@@ -4,7 +4,7 @@ defmodule Loany.Repo.Migrations.AddColumn do
   def change do
     alter table(:loans) do
       add :loan_status, :string
-      add :loan_score, :string
+      add :loan_score, :decimal
     end
   end
 end

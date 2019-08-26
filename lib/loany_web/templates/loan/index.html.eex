@@ -12,7 +12,7 @@
   <%= text_input f, :phone_number %>
   <%= error_tag f, :phone_number %>
 
-  <%= label f, :email %>
+  <%= label f, :email %>  
   <%= text_input f, :email %>
   <%= error_tag f, :email %>
 
